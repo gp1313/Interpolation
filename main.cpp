@@ -3,7 +3,7 @@
 
 using namespace std;
 using namespace inter;
-
+#define DebugDisplay 1
 int main()
 {
     int iOutLen = 19;
@@ -21,9 +21,11 @@ int main()
     iaArr[8] = 15232;
     iaArr[9] = 1202;
     
-    Interpolation oReferInter(iaArr, 10, iOutLen);
+    Interpolation oReferInter(iaArr, iInLen, iOutLen);
+    oReferInter.setMethod(COEF_TYPE);
     piOutputArr = oReferInter.RunInterpolation();
-        
+
+#if DebugDisplay
     for(int i =0; i<iInLen; i++)
     {
         cout << iaArr[i] << " ";
@@ -40,6 +42,6 @@ int main()
         cout << piOutputArr[i] << " ";
     }
     cout << endl;
-    
+#endif
     return 0;
 }
