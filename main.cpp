@@ -1,0 +1,45 @@
+#include <iostream>
+#include <interpolation.h>
+
+using namespace std;
+using namespace inter;
+
+int main()
+{
+    int iOutLen = 19;
+    int iInLen = 10;
+    int iaArr[iInLen];
+    int *piOutputArr = NULL;
+    iaArr[0] = 12;
+    iaArr[1] = 112;
+    iaArr[2] = 132;
+    iaArr[3] = 1278;
+    iaArr[4] = 1256;
+    iaArr[5] = 123;
+    iaArr[6] = 1321;
+    iaArr[7] = 142;
+    iaArr[8] = 15232;
+    iaArr[9] = 1202;
+    
+    Interpolation oReferInter(iaArr, 10, iOutLen);
+    piOutputArr = oReferInter.RunInterpolation();
+        
+    for(int i =0; i<iInLen; i++)
+    {
+        cout << iaArr[i] << " ";
+    }
+    cout << endl;
+        
+    for(int i =0; i<iOutLen; i++)
+    {
+        cout << oReferInter.pfInterMap[i] << " ";
+    }
+    cout << endl;
+    for(int i =0; i<iOutLen; i++)
+    {
+        cout << piOutputArr[i] << " ";
+    }
+    cout << endl;
+    
+    return 0;
+}
