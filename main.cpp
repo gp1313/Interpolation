@@ -4,6 +4,7 @@
 using namespace std;
 using namespace inter;
 #define DebugDisplay 1
+#define USE_CPU 0
 int main()
 {
     int iOutLen = 19;
@@ -22,6 +23,13 @@ int main()
     iaArr[9] = 1202;
     
     Interpolation oReferInter(iaArr, iInLen, iOutLen);
+    if (USE_CPU)
+    {
+        oReferInter.pfInterMap = oReferInter.generateMap(iInLen, iOutLen);
+    }else
+    {
+        oReferInter.pfInterMap = cl_map_generation(iInLen, iOutLen);
+    }
     oReferInter.setMethod(COEF_TYPE);
     piOutputArr = oReferInter.RunInterpolation();
 

@@ -12,7 +12,6 @@ Interpolation::Interpolation(int *piArr,int iInLength, int iOutLength)
     for(int i=0; i<iInLen; i++)
         piInputArr[i] = piArr[i];
     eMethodUsed = DEFAULT_TYPE;
-    pfInterMap = generateMap(iInLen, iOutLen);
 }
 
 Interpolation::~Interpolation()
@@ -49,12 +48,12 @@ int *Interpolation::RunInterpolation()
         }
         piOutputArr[i] = ( b * float(piInputArr[index]) )+ ( a * float(piInputArr[index+1]));
     }
+    
     return piOutputArr;
 }
 
 float *Interpolation::generateMap(int iInLen, int iOutLen)
 {
-    int iRetCLInit = init_opencl();
     for(int i = 0; i<iOutLen; i++)
     {
         pfInterMap[i] = float(iInLen-1) * float(i) / float(iOutLen-1);

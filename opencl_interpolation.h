@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int init_opencl();
+float *cl_map_generation(int in, int out);
 void run_opencl();
 void close_opencl();
 
