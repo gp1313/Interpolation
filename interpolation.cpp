@@ -46,7 +46,7 @@ int *Interpolation::RunInterpolation()
         { 
             return NULL;
         }
-        piOutputArr[i] = ( b * float(piInputArr[index]) )+ ( a * float(piInputArr[index+1]));
+        piOutputArr[i] = ( b * float(piInputArr[index]) ) + ( a * float(piInputArr[index+1]) );
     }
     
     return piOutputArr;

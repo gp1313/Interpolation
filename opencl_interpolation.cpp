@@ -158,7 +158,12 @@ float *cl_map_generation(int iInputLen, int iOutputLen)
     }
     clReleaseEvent(CLEvent);
     clFinish(CLCommandQueue);
+    float *pfTemp = new float[iOutputLen];
+        
+    err = clEnqueueReadBuffer(CLCommandQueue, CLBufferMapArr, CL_TRUE, 0, sizeof(float) * iOutputLen, pfTemp, 0, NULL, &CLEvent);
+    clReleaseEvent(CLEvent);
+    clFinish(CLCommandQueue);
+//    fTemp = NULL;
     printf("Done \n");    
-    float *fTemp = NULL;
-    return fTemp;
+    return pfTemp;
 }
